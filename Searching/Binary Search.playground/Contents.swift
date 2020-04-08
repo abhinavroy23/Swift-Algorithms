@@ -4,13 +4,15 @@
 // Only appicable on 'sorted array'
 // complexity - O(logn)
 func binarySearchRecursive<T : Comparable>(arr : [T], startIndex : Int, endIndex : Int,elementToFind : T) -> Int{
-    let mid : Int = (startIndex + endIndex)/2
-    if arr[mid] == elementToFind{
-        return mid
-    }else if arr[mid] > elementToFind{
-        return binarySearchRecursive(arr: arr, startIndex: startIndex, endIndex: mid, elementToFind: elementToFind)
-    }else if arr[mid] < elementToFind{
-        return binarySearchRecursive(arr: arr, startIndex: mid+1, endIndex: endIndex, elementToFind: elementToFind)
+    if endIndex >= startIndex{
+        let mid : Int = (startIndex + endIndex)/2
+        if arr[mid] == elementToFind{
+            return mid
+        }else if arr[mid] > elementToFind{
+            return binarySearchRecursive(arr: arr, startIndex: startIndex, endIndex: mid, elementToFind: elementToFind)
+        }else if arr[mid] < elementToFind{
+            return binarySearchRecursive(arr: arr, startIndex: mid+1, endIndex: endIndex, elementToFind: elementToFind)
+        }
     }
     return -1
 }
@@ -38,5 +40,5 @@ func binarySearchIterative<T : Comparable>(arr : [T], startIndex : Int, endIndex
 
 // Test - Search
 let binaryArr : [Int] = [1,2,3,4,5,6,7,8,9,10,11]
-print(binarySearchRecursive(arr: binaryArr, startIndex: 0, endIndex: binaryArr.count-1, elementToFind: 6))
-print(binarySearchIterative(arr: binaryArr, startIndex: 0, endIndex: binaryArr.count-1, elementToFind: 6))
+print(binarySearchRecursive(arr: binaryArr, startIndex: 0, endIndex: binaryArr.count-1, elementToFind: 15))
+print(binarySearchIterative(arr: binaryArr, startIndex: 0, endIndex: binaryArr.count-1, elementToFind: 15))
